@@ -15,12 +15,12 @@ def retrieve_material(query):
         ])
         material_words = tokenize(searchable_text)
 
-          score = len(query_words & material_words) / max(len(query_words), 1)
-          scores.append(score)
-      best_index = scores.index(max(scores))
-      if scores[best_index] == 0:
-          return None, 0
-      return df.iloc[best_index], scores[best_index]
+        score = len(query_words & material_words) / max(len(query_words), 1)
+        scores.append(score)
+    best_index = scores.index(max(scores))
+    if scores[best_index] == 0:
+        return None, 0
+    return df.iloc[best_index], scores[best_index]
 
 def study_assistant(query):
     material, score = retrieve_material(query)

@@ -18,14 +18,13 @@ def construct_prompt(row):
     if technique == "Zero-Shot":
         return f"You are a {role}. {task}: {text}"
     if technique == "One-Shot":
-
-          return (f"You are a {role}. {task}. Example: "
-                  f"{row['Example_Input']} -> {row['Example_Output']}. New input: {text}")
-      if technique == "Few-Shot":
-          return (f"You are a {role}. {task}. Examples: "
-                  "Excellent service -> Positive; Poor quality -> Negative. "
-                  f"New input: {text}")
-      return f"Act as a {role}. {task}: {text}"
+        return (f"You are a {role}. {task}. Example: "
+                f"{row['Example_Input']} -> {row['Example_Output']}. New input: {text}")
+    if technique == "Few-Shot":
+        return (f"You are a {role}. {task}. Examples: "
+                "Excellent service -> Positive; Poor quality -> Negative. "
+                f"New input: {text}")
+    return f"Act as a {role}. {task}: {text}"
 
 print("----- ROLE-BASED AND EXAMPLE-BASED PROMPTING -----")
 for _, row in df.iterrows():
@@ -35,11 +34,9 @@ for _, row in df.iterrows():
     elif "priority" in row["Task"].lower():
         response = "High" if "unavailable" in row["Input_Text"].lower() else "Low"
     else:
-        response = "Suggested rewrite: Please share the project file at your earliest
-convenience."
+        response = "Suggested rewrite: Please share the project file at your earliest convenience."
     print(f"\nID: {row['Example_ID']} | Technique: {row['Technique']}")
     print("Constructed prompt:", prompt)
     print("Python demonstration response:", response)
 
-print("\nDemonstration completed. Responses use predefined Python rules, not a live
-LLM.")
+print("\nDemonstration completed. Responses use predefined Python rules, not a live LLM.")

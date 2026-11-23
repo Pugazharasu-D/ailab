@@ -36,16 +36,15 @@ while True:
     print("5. Exit")
     choice = input("Enter your choice: ")
     if choice == "1":
-
-         add_student()
-     elif choice == "2":
-         view_students()
-     elif choice == "3":
-         search_student()
-     elif choice == "4":
-         delete_student()
-     elif choice == "5":
-         print("Exiting...")
-         break
-     else:
-         print("Invalid choice.")
+        add_student()
+    elif choice == "2":
+        view_students()
+    elif choice == "3":
+        search_student()
+    elif choice == "4":
+        delete_student()
+    elif choice == "5":
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice.")
